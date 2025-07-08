@@ -13,7 +13,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './pages/HomePage/Loadable';
-import { NotFoundPage } from './components/NotFoundPage/Loadable';
+import { NotFoundPage } from './pages/NotFoundPage';
 import { useTranslation } from 'react-i18next';
 
 export function App() {
@@ -21,11 +21,11 @@ export function App() {
   return (
     <BrowserRouter>
       <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
+        titleTemplate="%s -Todo List"
+        defaultTitle="Todo List"
         htmlAttributes={{ lang: i18n.language }}
       >
-        <meta name="description" content="A React Boilerplate application" />
+        <meta name="description" content="Todo List application" />
       </Helmet>
 
       <Routes>
