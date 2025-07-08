@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 
+import TodoInput from 'app/components/Todoinput';
+import TodoItem from 'app/components/TodoItem';
+
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -25,20 +28,28 @@ const Title = styled.h1`
 
 const TodoList = styled.div``;
 
-const TodoItem = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 15px 25px;
-  width: 100%;
-  font-size: 1.2rem;
-  border-bottom: 1px solid #eee;
-`;
-
-const TodoCheck = styled.input`
-  margin-right: 15px;
-`;
-
 export function HomePage() {
+  const [todoList, setTodoList] = React.useState<ITodoItem[]>([
+    {
+      id: '1',
+      content: 'First todo',
+      completed: true,
+      editing: false,
+    },
+    {
+      id: '2',
+      content: 'Second todo',
+      completed: true,
+      editing: false,
+    },
+    {
+      id: '3',
+      content: 'Thrid todo',
+      completed: true,
+      editing: false,
+    },
+  ]);
+
   return (
     <>
       <Helmet>
@@ -49,10 +60,14 @@ export function HomePage() {
         <Box>
           <Title>To do List</Title>
           <TodoList>
-            <TodoItem>
-              <TodoCheck type="checkbox" />
-              i"m todo
-            </TodoItem>
+            <TodoInput
+              setTodoList={(todo: ITodoItem) =>
+                setTodoList([todo, ...todoList])
+              }
+            />
+            {todoList.map(todo => (
+              <TodoItem todo={todo} />
+            ))}
           </TodoList>
         </Box>
       </Wrapper>
