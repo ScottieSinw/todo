@@ -5,12 +5,13 @@ import Checkbox from '../Checkbox';
 import CircleButton from '../Button/CircleButton';
 import TodoInput from '../Todoinput';
 
-const Box = styled.div`
+const Box = styled.div<{ isEditing: boolean }>`
   display: flex;
   align-items: center;
-  padding: 15px 25px;
+  padding: ${props =>
+    props.isEditing ? '11px 15px 11px 25px' : '15px 15px 15px 25px'};
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1.1em;
   border-bottom: 1px solid #eee;
 
   & > .delete-button {
@@ -18,7 +19,7 @@ const Box = styled.div`
   }
 
   &:hover {
-    padding: 15px;
+    padding: 10px;
     & > .delete-button {
       display: flex;
     }
@@ -39,25 +40,40 @@ const TodoContent = styled.span<{ checked: boolean }>`
 
 export default function TodoItem({
   todo,
-  onClick,
+  checkTodo,
+  editModeTodo,
+  editTodo,
+  deleteTodo,
 }: {
   todo: ITodoItem;
-  onClick?: () => void;
+  checkTodo: () => void;
+  editModeTodo: () => void;
+  editTodo: (content: string) => void;
+  deleteTodo: () => void;
 }) {
   return (
-    <Box>
+    <Box isEditing={todo.editing}>
       <div style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-        <Checkbox checked={todo.completed} onClick={onClick} />
+        <Checkbox checked={todo.completed} onClick={() => checkTodo()} />
         <Block marginLeft="10px" />
         {todo.editing ? (
-          <TodoInput />
+          <TodoInput
+            editTodo={(todo: string) => {
+              editTodo(todo);
+              editModeTodo();
+            }}
+            isEditing={true}
+            editContent={todo.content}
+          />
         ) : (
-          <TodoContent checked={todo.completed}>{todo.content}</TodoContent>
+          <TodoContent onClick={() => editModeTodo()} checked={todo.completed}>
+            {todo.content}
+          </TodoContent>
         )}
       </div>
       <CircleButton
         className="delete-button"
-        onClick={() => {}}
+        onClick={() => deleteTodo()}
         Icon={() => (
           <svg
             xmlns="http://www.w3.org/2000/svg"
