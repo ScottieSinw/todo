@@ -19,6 +19,7 @@ const Box = styled.div`
   height: 600px;
   background-color: white;
   box-shadow: 0px 25px 100px -60px rgba(0, 0, 0, 0.18);
+  border-radius: 5%;
 `;
 
 const Title = styled.h1`
