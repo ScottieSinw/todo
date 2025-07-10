@@ -66,7 +66,7 @@
     "build": "react-scripts build && yarn run workbox",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-     "workbox": "workbox generateSW workbox-config.ts ",
+    "workbox": "workbox generateSW workbox-config.ts ",
     "start:prod": "yarn run build && serve -s build",
     "test:generators": "ts-node ./internals/testing/generators/test-generators.ts",
     "checkTs": "tsc --noEmit",
@@ -77,7 +77,7 @@
     "generate": "plop --plopfile internals/generators/plopfile.ts",
     "prettify": "prettier --write",
     "extract-messages": "i18next-scanner --config=internals/extractMessages/i18next-scanner.config.js",
-    "prepare": "husky install"
+    "prepare": "test ! -d .git || husky install"
   },
   "browserslist": {
     "production": [
