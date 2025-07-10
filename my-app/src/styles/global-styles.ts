@@ -5,9 +5,13 @@ export const GlobalStyle = createGlobalStyle`
   body {
     height: 100%;
     width: 100%;
+    overflow: hidden;
+    @supports(-webkit-touch-callout: none){
+      height: -webkit-fill-available;
   }
 
   body {
+    min-height: 100vh;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
