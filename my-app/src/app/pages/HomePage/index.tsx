@@ -27,8 +27,6 @@ const Box = styled.div`
   @media (max-width: 425px) {
     width: 100%;
     height: 100vh;
-       
-    }
   }
 `;
 
@@ -38,11 +36,11 @@ const Title = styled.h1`
 `;
 
 const TodoList = styled.div`
-   height:'450px'
-   overflow-y: auto;
-   @media (max-width: 425px){
+  height: 450px;
+  overflow-y: auto;
+  @media (max-width: 425px) {
     height: calc(100vh - 128px);
-   }
+  }
 `;
 
 export function HomePage() {

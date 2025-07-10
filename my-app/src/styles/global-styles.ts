@@ -6,8 +6,10 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
     overflow: hidden;
-    @supports(-webkit-touch-callout: none){
+    
+    @supports (-webkit-touch-callout: none) {
       height: -webkit-fill-available;
+    }
   }
 
   body {
