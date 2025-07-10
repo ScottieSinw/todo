@@ -66,7 +66,7 @@
     "build": "react-scripts build && yarn run workbox",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "workbox": "workbox generateSW workbox-config.ts ",
+    "workbox": "workbox generateSW workbox-config.ts",
     "start:prod": "yarn run build && serve -s build",
     "test:generators": "ts-node ./internals/testing/generators/test-generators.ts",
     "checkTs": "tsc --noEmit",
