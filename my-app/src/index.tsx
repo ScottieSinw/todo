@@ -27,6 +27,8 @@ import reportWebVitals from 'reportWebVitals';
 // Initialize languages
 import './locales/i18n';
 
+import * as serviceWorkerRegistarion from './serviceWorkerRegistration';
+
 const store = configureAppStore();
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -48,6 +50,7 @@ if (module.hot) {
     // No need to render the App again because i18next works with the hooks
   });
 }
+serviceWorkerRegistarion.register();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
